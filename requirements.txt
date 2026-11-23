@@ -1,0 +1,3 @@
+# Installs the engine in editable mode plus dev tools (pytest, ruff, mypy).
+# Later phases: pip install -e ".[ml]" for PyTorch, pip install -e ".[ui]" for Pygame/Matplotlib.
+-e .[dev]

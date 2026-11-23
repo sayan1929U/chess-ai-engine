@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chess-ai-engine"
+version = "0.1.0"
+description = "Research-grade chess engine: alpha-beta search, tuned evaluation, neural evaluation, self-play RL"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Sayan Dey" }]
+dependencies = ["python-chess>=1.10"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-cov>=4", "ruff>=0.4", "mypy>=1.8"]
+ml = ["numpy>=1.24", "torch"]
+ui = ["pygame", "matplotlib"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
+markers = ["slow: long-running tests (deselect with -m 'not slow')"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+check_untyped_defs = true
